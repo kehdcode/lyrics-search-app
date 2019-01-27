@@ -1,11 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' 
+import Provider, { Consumer } from '../../context'
+import Spinner from '../layout/Spinner'
 
  class Tracks extends Component {
   render() {
     return (
-      <div>
-        <h1>Tracks Component</h1>
-      </div>
+      <Consumer>
+       {value =>{
+        const{track_list} = value
+        if( track_list === undefined || track_list.length == 0){
+          return <Spinner />
+        }else {
+          return <h1>Tracks Loaded</h1>
+        }
+       }}
+      </Consumer>
     )
   }
 }
